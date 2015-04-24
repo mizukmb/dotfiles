@@ -161,17 +161,17 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]>\w*\|\h\w*::'
 
-augroup vimrc
-  " コメントアウトの補完を打ち消す
-  " ←改行したらこれが出るのを消す
-  autocmd FileType * setlocal formatoptions-=ro
-  " ファイルを開いた際に、前回終了時の行で起動
-  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-  " If open Go file
-  autocmd BufRead *.go setlocal noexpandtab
-  autocmd Bufread *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2 |
-        \ let g:rsenseUseOmniFunc = 1
-augroup END
+" ファイルを開いた際に、前回終了時の行で起動
+autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+      \ exe "normal g`\"" |
+      \ endif
+
+" If open Go file
+autocmd vimrc BufRead *.go setlocal noexpandtab
+
+" If open Ruby file
+autocmd vimrc BufRead *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2 |
+      \ let g:rsenseUseOmniFunc = 1
 
 
 " lightlineの設定 {{{
