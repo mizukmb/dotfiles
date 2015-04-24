@@ -8,12 +8,21 @@ augroup END
 
 
 " NeoBudle関係 {{{
-filetype off
+" NeoBundleがない場合、インストールする
+if !isdirectory(expand('~/.vim/bundle'))
+  silent call mkdir(expand('~/.vim/bundle'), 'p')
+  silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+  echo "Installed neobundle.vim"
+  if v:shell_error
+    echorerr "neobundle.vim intallation has failed!"
+  endif
+endif
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
 endif
+
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " ここにインストールしたいプラグインのリストを書く
 NeoBundle 'Shougo/unite.vim'
@@ -52,6 +61,11 @@ NeoBundle 'marcus/rsense' " Rubyに特化した補完機能
 NeoBundle 'supermomonga/neocomplete-rsense.vim' " RsenseをNeocomplteで使うため
 " }}}
 
+call neobundle#end()
+
+" required
+filetype plugin on
+filetype indent on
 
 " キーマッピング
 noremap j gj
@@ -241,5 +255,3 @@ endfunction
 " }}}
 
 
-filetype plugin on
-filetype indent on
