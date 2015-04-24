@@ -188,7 +188,7 @@ let g:lightline = {
       \   'filename': 'MyFilename',
       \   'mocho': 'MyMocho',
       \   'otenki': 'MyOtenki',
-      \    'filetype': 'MyFiletype',
+      \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
       \   'fileencoding': 'MyFileencoding',
       \   'mode': 'MyMode'
