@@ -64,8 +64,7 @@ NeoBundle 'supermomonga/neocomplete-rsense.vim' " RsenseをNeocomplteで使う�
 call neobundle#end()
 
 " required
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " キーマッピング
 noremap j gj
