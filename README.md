@@ -1,6 +1,7 @@
 # ドットファイル管理
 
 ## 現在管理しているファイル
+- .gvimrc
 - .vimrc
 - .vimshrc
 - .zshrc
