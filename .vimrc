@@ -94,11 +94,6 @@ inoremap <C-f> <C-x><C-o>
 
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
 set number "行番号表示
-"set showmode "モード表示
-"set title "編集中のファイル名を表示
-"set ruler "ルーラーの表示
-"set showcmd "入力中のコマンドをステータスに表示する
-"set showmatch "括弧入力時の対応する括弧を表示
 set laststatus=2 "ステータスラインを常に表示
 
 
