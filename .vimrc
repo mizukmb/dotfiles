@@ -7,6 +7,15 @@ augroup vimrc
 augroup END
 
 
+filetype off
+filetype plugin indent off
+
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
+
+
 " NeoBudle関係 {{{
 " NeoBundleがない場合、インストールする
 if !isdirectory(expand('~/.vim/bundle'))
@@ -16,10 +25,6 @@ if !isdirectory(expand('~/.vim/bundle'))
   if v:shell_error
     echorerr "neobundle.vim intallation has failed!"
   endif
-endif
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
