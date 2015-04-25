@@ -30,47 +30,95 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 
 " ここにインストールしたいプラグインのリストを書く
+" Unite
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+
+" Vimで非同期処理を実現する
+NeoBundle 'Shougo/vimproc.vim'
+
+" vimshell
+NeoBundle 'Shougo/vimshell.vim', {
+      \ 'depends' :
+      \     ['Shougo/vimproc.vim']
+      \ }
+
+" Vimでweb-apiを使用する
+NeoBundle 'mattn/webapi-vim'
+
+" Vimからブラウザを開く
+NeoBundle 'tyru/open-browser.vim'
+
 " 列整形
-NeoBundle 'junegunn/vim-easy-align.git'
-NeoBundle 'basyura/bitly.vim.git'
-NeoBundle 'basyura/TweetVim.git' " TweetVim
-NeoBundle 'basyura/twibill.vim.git'
-NeoBundle 'h1mesuke/unite-outline.git'
-NeoBundle 'mattn/webapi-vim.git'
-NeoBundle 'tyru/open-browser.vim.git' " Vimからブラウザを開くプラグイン
-NeoBundle 'yomi322/neco-tweetvim.git'
-NeoBundle 'yomi322/unite-tweetvim.git'
-NeoBundle 'mizukmb/mocho.git' " mocho.vim（めっちゃすごい！！！！）
-NeoBundle 'itchyny/lightline.vim' " lightline.vim（ステータスライン表示プラグイン）
-NeoBundle 'tpope/vim-fugitive' " fugitive.vim（Git関連。ステータスラインにブランチ表示させているのもこれ）
+NeoBundle 'junegunn/vim-easy-align'
+
+" TweetVim
+NeoBundleLazy 'basyura/twibill.vim'
+NeoBundleLazy 'basyura/TweetVim', {
+      \ 'depends' :
+      \     ['basyura/twibill.vim',
+      \      'tyru/open-browser.vim']
+      \ }
+
+" lightline.vim（ステータスライン表示プラグイン）
+NeoBundle 'itchyny/lightline.vim'
+
+" fugitive.vim（Git関連。ステータスラインにブランチ表示させているのもこれ）
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tomtom/tcomment_vim' " コメントON/OFFを手軽に実行
-NeoBundle 'tpope/vim-rails' " rails便利プラグイン（modelとかviewとかにすぐ移動できたりする）
-NeoBundle 'scrooloose/nerdtree' " ツリー表示
-NeoBundle 'tpope/vim-endwise.git' " Rubyでendを自動的につけてくれる
-NeoBundle 'deris/vim-shot-f.git' " fの候補をハイライト
-NeoBundle 'Shougo/vimshell.vim.git' " vimshell
-NeoBundle 'Shougo/vimproc.vim.git' " vimproc(vimshellに必要)
-NeoBundle 'mattn/emmet-vim' " HTMLタグ補完
-NeoBundle 'altercation/vim-colors-solarized' " カラースキーム
+
+" コメントON/OFFを手軽に実行
+NeoBundle 'tomtom/tcomment_vim'
+
+" rails便利プラグイン（modelとかviewとかにすぐ移動できたりする）
+NeoBundle 'tpope/vim-rails'
+
+" ツリー表示
+NeoBundle 'scrooloose/nerdtree'
+
+" Rubyでendを自動的につけてくれる
+NeoBundle 'tpope/vim-endwise'
+
+" fの候補をハイライト
+NeoBundle 'deris/vim-shot-f'
+
+" HTMLタグ補完
+NeoBundle 'mattn/emmet-vim'
+
+" カラースキーム
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'w0ng/vim-hybrid'
-NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}} " Gocode
-" NeoBundleLazy 'faith/vim-go', {"autoload": {"filetypes": ['go']}}
-NeoBundle 'jiangmiao/auto-pairs.git' " 括弧補完
-NeoBundle 'rbtnn/game_engine.vim' " ゲームエンジン
-NeoBundle 'rbtnn/reversi.vim' " リバーシ
-NeoBundle 'mizukmb/otenki.vim.git' " 天気予報
-NeoBundle 'scrooloose/syntastic' " syntacs check
-NeoBundle 'Shougo/neocomplete.vim' " 補完機能
-NeoBundle 'marcus/rsense' " Rubyに特化した補完機能
-NeoBundle 'supermomonga/neocomplete-rsense.vim' " RsenseをNeocomplteで使うため
-" }}}
+
+" Gocode
+NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
+
+" 括弧補完
+NeoBundle 'jiangmiao/auto-pairs'
+
+" 天気予報
+NeoBundle 'mizukmb/otenki.vim'
+
+" mocho.vim（めっちゃすごい！！！！）
+NeoBundle 'mizukmb/mocho'
+
+" syntacs check
+NeoBundle 'scrooloose/syntastic'
+
+" 補完機能
+NeoBundle 'Shougo/neocomplete.vim'
+
+" Rubyに特化した補完機能
+NeoBundle 'marcus/rsense'
+
+" RsenseをNeocomplteで使うため
+NeoBundle 'supermomonga/neocomplete-rsense.vim'
 
 call neobundle#end()
 
 " required
 filetype plugin indent on
+" }}}
+
 
 " キーマッピング
 noremap j gj
