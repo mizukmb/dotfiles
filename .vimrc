@@ -31,7 +31,8 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 " ここにインストールしたいプラグインのリストを書く
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Align'
+" 列整形
+NeoBundle 'junegunn/vim-easy-align.git'
 NeoBundle 'basyura/bitly.vim.git'
 NeoBundle 'basyura/TweetVim.git' " TweetVim
 NeoBundle 'basyura/twibill.vim.git'
@@ -94,6 +95,8 @@ nnoremap <Space>o :OtenkiTomorrow<CR>
 nnoremap <Space>oh :Otenki hachinohe<CR>
 
 inoremap <C-f> <C-x><C-o>
+
+vmap <Enter> <Plug>(EasyAlign)
 
 
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
