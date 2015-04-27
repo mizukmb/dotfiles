@@ -104,7 +104,7 @@ NeoBundle 'jiangmiao/auto-pairs'
 " 天気予報
 NeoBundle 'mizukmb/otenki.vim', {
       \ 'depends' : [
-      \   'mattn/web-api'
+      \   'mattn/webapi-vim'
       \   ]
       \ }
 
