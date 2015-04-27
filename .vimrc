@@ -131,6 +131,9 @@ NeoBundle 'supermomonga/neocomplete-rsense.vim', {
       \   ]
       \ }
 
+" テキストを囲うもの("",'',{}など)の編集を補助する
+NeoBundle 'tpope/vim-surround'
+
 call neobundle#end()
 
 " required
