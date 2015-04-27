@@ -35,7 +35,13 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 
 " Vimで非同期処理を実現する
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \   'cygwin' : 'make -f make_cygwin.mak',
+      \   'mac'    : 'make -f make_mac.mak',
+      \   'unix'   : 'make -f make_unix.mak',
+      \   }
+      \ }
 
 " vimshell
 NeoBundle 'Shougo/vimshell.vim', {
@@ -53,8 +59,8 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'junegunn/vim-easy-align'
 
 " TweetVim
-NeoBundleLazy 'basyura/twibill.vim'
-NeoBundleLazy 'basyura/TweetVim', {
+NeoBundle 'basyura/twibill.vim'
+NeoBundle 'basyura/TweetVim', {
       \ 'depends' :
       \     ['basyura/twibill.vim',
       \      'tyru/open-browser.vim']
@@ -76,7 +82,7 @@ NeoBundle 'tpope/vim-rails'
 " ツリー表示
 NeoBundle 'scrooloose/nerdtree'
 
-" Rubyでendを自動的につけてくれる
+" RubyやVim Scriptでend(endif)等を自動的につけてくれる
 NeoBundle 'tpope/vim-endwise'
 
 " fの候補をハイライト
@@ -96,7 +102,11 @@ NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
 NeoBundle 'jiangmiao/auto-pairs'
 
 " 天気予報
-NeoBundle 'mizukmb/otenki.vim'
+NeoBundle 'mizukmb/otenki.vim', {
+      \ 'depends' : [
+      \   'mattn/web-api'
+      \   ]
+      \ }
 
 " mocho.vim（めっちゃすごい！！！！）
 NeoBundle 'mizukmb/mocho'
@@ -108,10 +118,18 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Shougo/neocomplete.vim'
 
 " Rubyに特化した補完機能
-NeoBundle 'marcus/rsense'
+NeoBundleLazy 'marcus/rsense', {
+      \ 'autoload' : {
+      \   'filetypes' : 'ruby',
+      \   }
+      \ }
 
 " RsenseをNeocomplteで使うため
-NeoBundle 'supermomonga/neocomplete-rsense.vim'
+NeoBundle 'supermomonga/neocomplete-rsense.vim', {
+      \ 'depends' : [
+      \   'Shougo/neocomplete.vim', 'marcus/rsense'
+      \   ]
+      \ }
 
 call neobundle#end()
 
