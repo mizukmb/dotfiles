@@ -3,7 +3,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 augroup vimrc
-  autocmd!
+    autocmd!
 augroup END
 
 
@@ -12,19 +12,19 @@ filetype plugin indent off
 
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+    set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
 
 " NeoBudle関係 {{{
 " NeoBundleがない場合、インストールする
 if !isdirectory(expand('~/.vim/bundle'))
-  silent call mkdir(expand('~/.vim/bundle'), 'p')
-  silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
-  echo "Installed neobundle.vim"
-  if v:shell_error
-    echorerr "neobundle.vim intallation has failed!"
-  endif
+    silent call mkdir(expand('~/.vim/bundle'), 'p')
+    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    echo "Installed neobundle.vim"
+    if v:shell_error
+        echorerr "neobundle.vim intallation has failed!"
+    endif
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
@@ -36,18 +36,18 @@ NeoBundle 'h1mesuke/unite-outline'
 
 " Vimで非同期処理を実現する
 NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \   'cygwin' : 'make -f make_cygwin.mak',
-      \   'mac'    : 'make -f make_mac.mak',
-      \   'unix'   : 'make -f make_unix.mak',
-      \   }
-      \ }
+            \ 'build' : {
+            \   'cygwin' : 'make -f make_cygwin.mak',
+            \   'mac'    : 'make -f make_mac.mak',
+            \   'unix'   : 'make -f make_unix.mak',
+            \   }
+            \ }
 
 " vimshell
 NeoBundle 'Shougo/vimshell.vim', {
-      \ 'depends' :
-      \     ['Shougo/vimproc.vim']
-      \ }
+            \ 'depends' :
+            \     ['Shougo/vimproc.vim']
+            \ }
 
 " Vimでweb-apiを使用する
 NeoBundle 'mattn/webapi-vim'
@@ -61,10 +61,10 @@ NeoBundle 'junegunn/vim-easy-align'
 " TweetVim
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'basyura/TweetVim', {
-      \ 'depends' :
-      \     ['basyura/twibill.vim',
-      \      'tyru/open-browser.vim']
-      \ }
+            \ 'depends' :
+            \     ['basyura/twibill.vim',
+            \      'tyru/open-browser.vim']
+            \ }
 
 " lightline.vim（ステータスライン表示プラグイン）
 NeoBundle 'itchyny/lightline.vim'
@@ -103,10 +103,10 @@ NeoBundle 'jiangmiao/auto-pairs'
 
 " 天気予報
 NeoBundle 'mizukmb/otenki.vim', {
-      \ 'depends' : [
-      \   'mattn/webapi-vim'
-      \   ]
-      \ }
+            \ 'depends' : [
+            \   'mattn/webapi-vim'
+            \   ]
+            \ }
 
 " mocho.vim（めっちゃすごい！！！！）
 NeoBundle 'mizukmb/mocho'
@@ -172,16 +172,17 @@ vmap <Enter> <Plug>(EasyAlign)
 set number "行番号表示
 set laststatus=2 "ステータスラインを常に表示
 
-
-" プログラミングヘルプ系
-syntax enable "カラー表示
-set smartindent "オートインデント
+"カラー表示
+syntax enable
+"オートインデント
+set smartindent
+" <BS>で何でも消せる
 set backspace=start,eol,indent
 
 
-" タブスペースのデフォルトは半角スペース2文字
+" タブスペースのデフォルトは半角スペース4文字
+set tabstop=4 shiftwidth=4 softtabstop=4
 set expandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
 
 
 " 検索系
@@ -233,95 +234,106 @@ let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
+    let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]>\w*\|\h\w*::'
 
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-      \ exe "normal g`\"" |
-      \ endif
+            \ exe "normal g`\"" |
+            \ endif
 
-" If open Go file
-autocmd vimrc BufRead *.go setlocal noexpandtab
 
-" If open Ruby file
-autocmd vimrc BufRead *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2 |
-      \ let g:rsenseUseOmniFunc = 1
+" Go setting
+function! s:golang_settings()
+    setlocal noexpandtab
+    let g:syntatic_mode_map = {
+                \ 'active_filetypes' : [ 'go' ] 
+                \ }
+    let g:syntatic_go_checkers = ['go', 'golint']
+endfunction
+autocmd vimrc FileType go call <SID>golang_settings()
 
+
+" Ruby settig
+function! s:ruby_settings()
+    setlocal tabstop=2 shiftwidth=2 softtabstop=2 
+    let g:rsenseUseOmniFunc = 1
+endfunction
+autocmd vimrc FileType ruby call <SID>ruby_settings()
 
 " lightlineの設定 {{{
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'mode_map': {'c': 'NORMAL'},
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['mocho'], ['otenki'] ]
-      \ },
-      \ 'component_function': {
-      \   'modified': 'MyModified',
-      \   'readonly': 'MyReadonly',
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'mocho': 'MyMocho',
-      \   'otenki': 'MyOtenki',
-      \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode'
-      \ }
-      \ }
+            \ 'colorscheme': 'wombat',
+            \ 'mode_map': {'c': 'NORMAL'},
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['mocho'], ['otenki'] ]
+            \ },
+            \ 'component_function': {
+            \   'modified': 'MyModified',
+            \   'readonly': 'MyReadonly',
+            \   'fugitive': 'MyFugitive',
+            \   'filename': 'MyFilename',
+            \   'mocho': 'MyMocho',
+            \   'otenki': 'MyOtenki',
+            \   'filetype': 'MyFiletype',
+            \   'fileformat': 'MyFileformat',
+            \   'fileencoding': 'MyFileencoding',
+            \   'mode': 'MyMode'
+            \ }
+            \ }
 
 
 function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
 endfunction
 
 function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+                \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \  &ft == 'unite' ? unite#get_status_string() :
+                \  &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+                \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-      let _ = fugitive#head()
-      return strlen(_) ? '🍣 '._ : ''
-    endif
-  catch
-  endtry
-  return ''
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            let _ = fugitive#head()
+            return strlen(_) ? '🍣 '._ : ''
+        endif
+    catch
+    endtry
+    return ''
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
+    return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
+    return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
 function! MyMocho()
-  return g:StatusMocho()
+    return g:StatusMocho()
 endfunction
 
 function! MyOtenki()
-  return g:MyStatusOtenki()
+    return g:MyStatusOtenki()
 endfunction
 " }}}
 
