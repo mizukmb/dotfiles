@@ -202,17 +202,17 @@ set nohlsearch "検索結果文字列の非ハイライト表示
 set cursorline
 
 
-" Go言語の設定
-set rtp+=$GOROOT/misc/vim
-exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
-set completeopt=menu,preview
-let g:gofmt_command = 'goimports'
+" コマンド履歴
+set history=100
+
+
+" 補完時にプレビューウインドウを表示させない
+set completeopt=menuone,menu
 
 
 " TweetVim関係
 " 1ページに表示する最大数
 let g:tweetvim_tweet_per_page = 50
-
 
 " emmitの設定
 " HTML/CSSファイルのみ有効
