@@ -119,20 +119,25 @@ NeoBundle 'Shougo/neocomplete.vim'
 
 " Rubyに特化した補完機能
 NeoBundleLazy 'marcus/rsense', {
-      \ 'autoload' : {
-      \   'filetypes' : 'ruby',
-      \   }
-      \ }
+            \ 'autoload' : {
+            \   'filetypes' : 'ruby',
+            \   }
+            \ }
 
 " RsenseをNeocomplteで使うため
 NeoBundle 'supermomonga/neocomplete-rsense.vim', {
-      \ 'depends' : [
-      \   'Shougo/neocomplete.vim', 'marcus/rsense'
-      \   ]
-      \ }
+            \ 'depends' : [
+            \   'Shougo/neocomplete.vim', 'marcus/rsense'
+            \   ]
+            \ }
 
 " テキストを囲うもの("",'',{}など)の編集を補助する
 NeoBundle 'tpope/vim-surround'
+
+" Golangの設定（Fmt, Inport, Godocコマンドの提供）
+NeoBundleLazy 'vim-jp/vim-go-extra', {
+            \ 'autoload' : { 'filetypes' : 'go' }
+            \ }
 
 call neobundle#end()
 
