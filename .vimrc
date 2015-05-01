@@ -58,14 +58,6 @@ NeoBundle 'tyru/open-browser.vim'
 " 列整形
 NeoBundle 'junegunn/vim-easy-align'
 
-" TweetVim
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'basyura/TweetVim', {
-            \ 'depends' :
-            \     ['basyura/twibill.vim',
-            \      'tyru/open-browser.vim']
-            \ }
-
 " lightline.vim（ステータスライン表示プラグイン）
 NeoBundle 'itchyny/lightline.vim'
 
@@ -95,9 +87,6 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'w0ng/vim-hybrid'
 
-" Gocode
-NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
-
 " 括弧補完
 NeoBundle 'jiangmiao/auto-pairs'
 
@@ -117,26 +106,45 @@ NeoBundle 'scrooloose/syntastic'
 " 補完機能
 NeoBundle 'Shougo/neocomplete.vim'
 
+" テキストを囲うもの("",'',{}など)の編集を補助する
+NeoBundle 'tpope/vim-surround'
+
 " Rubyに特化した補完機能
 NeoBundleLazy 'marcus/rsense', {
             \ 'autoload' : {
-            \   'filetypes' : 'ruby',
+            \   'filetypes' : 'ruby'
             \   }
             \ }
 
 " RsenseをNeocomplteで使うため
-NeoBundle 'supermomonga/neocomplete-rsense.vim', {
-            \ 'depends' : [
-            \   'Shougo/neocomplete.vim', 'marcus/rsense'
-            \   ]
+NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
+            \ 'depends' :
+            \   ['Shougo/neocomplete.vim',
+            \    'marcus/rsense'],
+            \ 'autoload' : {
+            \   'filetypes' : 'ruby'
+            \   }
             \ }
-
-" テキストを囲うもの("",'',{}など)の編集を補助する
-NeoBundle 'tpope/vim-surround'
 
 " Golangの設定（Fmt, Inport, Godocコマンドの提供）
 NeoBundleLazy 'vim-jp/vim-go-extra', {
             \ 'autoload' : { 'filetypes' : 'go' }
+            \ }
+" NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
+
+
+" TweetVim
+NeoBundleLazy 'basyura/twibill.vim'
+NeoBundleLazy 'basyura/TweetVim', {
+            \ 'depends' :
+            \      ['basyura/twibill.vim',
+            \      'tyru/open-browser.vim'],
+            \ 'autoload' : {
+            \      'commands' :
+            \          ['TweetVimHomeTimeline',
+            \           'TweetVimMentions',
+            \           'TweetVimSay']
+            \      }
             \ }
 
 call neobundle#end()
@@ -341,5 +349,4 @@ function! MyOtenki()
     return g:MyStatusOtenki()
 endfunction
 " }}}
-
 
