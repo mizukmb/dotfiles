@@ -180,6 +180,8 @@ inoremap <C-f> <C-x><C-o>
 
 vmap <Enter> <Plug>(EasyAlign)
 
+imap <F2> <nop>
+set pastetoggle=<F2>
 
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
 set number "行番号表示
