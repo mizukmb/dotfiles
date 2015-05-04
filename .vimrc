@@ -348,7 +348,7 @@ function! MyMocho()
 endfunction
 
 function! MyOtenki()
-    return g:MyStatusOtenki()
+    return MyStatusOtenki()
 endfunction
 " }}}
 
