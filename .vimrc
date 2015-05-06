@@ -157,10 +157,10 @@ filetype plugin indent on
 " キーマッピング
 noremap j gj
 noremap k gk
-noremap <S-h>   g^
-noremap <S-j>   }
-noremap <S-k>   {
-noremap <S-l>   g$
+noremap <S-h> g^
+noremap <S-j> }
+noremap <S-k> {
+noremap <S-l> g$
 noremap m  %
 noremap %  m
 noremap :  ;
@@ -170,10 +170,10 @@ nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
 nnoremap <Space>n  :NERDTree<CR>
 nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
-nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
-nnoremap <Space>tm  :vs<CR>:TweetVimMentions<CR>
-nnoremap <Space>ts  :TweetVimSay<CR>
-nnoremap <Space>o :OtenkiTomorrow<CR>
+nnoremap <Space>tl :vs<CR>:TweetVimHomeTimeline<CR>
+nnoremap <Space>tm :vs<CR>:TweetVimMentions<CR>
+nnoremap <Space>ts :TweetVimSay<CR>
+nnoremap <Space>o  :OtenkiTomorrow<CR>
 nnoremap <Space>oh :Otenki hachinohe<CR>
 
 inoremap <C-f> <C-x><C-o>
@@ -184,7 +184,7 @@ imap <F2> <nop>
 set pastetoggle=<F2>
 
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
-set number "行番号表示
+set number       "行番号表示
 set laststatus=2 "ステータスラインを常に表示
 
 "カラー表示
@@ -201,11 +201,11 @@ set expandtab
 
 
 " 検索系
-set ignorecase "検索文字列が小文字の場合は大文字小文字を区別なく検索する
-set smartcase "検索文字列に大文字が含まれている場合は区別して検索する
-set wrapscan "検索時に最後まで行ったら最初に戻る
+set ignorecase  "検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set smartcase   "検索文字列に大文字が含まれている場合は区別して検索する
+set wrapscan    "検索時に最後まで行ったら最初に戻る
 set noincsearch "検索文字列入力時に順次対象文字列にヒットさせない
-set nohlsearch "検索結果文字列の非ハイライト表示
+set nohlsearch  "検索結果文字列の非ハイライト表示
 
 
 " カレント行に下線を表示する
@@ -280,21 +280,21 @@ autocmd vimrc FileType ruby call <SID>ruby_settings()
 " lightlineの設定 {{{
 let g:lightline = {
             \ 'colorscheme': 'wombat',
-            \ 'mode_map': {'c': 'NORMAL'},
-            \ 'active': {
+            \ 'mode_map':    {'c': 'NORMAL'},
+            \ 'active':      {
             \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['mocho'], ['otenki'] ]
             \ },
             \ 'component_function': {
-            \   'modified': 'MyModified',
-            \   'readonly': 'MyReadonly',
-            \   'fugitive': 'MyFugitive',
-            \   'filename': 'MyFilename',
-            \   'mocho': 'MyMocho',
-            \   'otenki': 'MyOtenki',
-            \   'filetype': 'MyFiletype',
-            \   'fileformat': 'MyFileformat',
-            \   'fileencoding': 'MyFileencoding',
-            \   'mode': 'MyMode'
+            \   'modified':         'MyModified',
+            \   'readonly':         'MyReadonly',
+            \   'fugitive':         'MyFugitive',
+            \   'filename':         'MyFilename',
+            \   'mocho':            'MyMocho',
+            \   'otenki':           'MyOtenki',
+            \   'filetype':         'MyFiletype',
+            \   'fileformat':       'MyFileformat',
+            \   'fileencoding':     'MyFileencoding',
+            \   'mode':             'MyMode'
             \ }
             \ }
 
