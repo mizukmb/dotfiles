@@ -157,7 +157,7 @@ filetype plugin indent on
 " キーマッピング
 
 " <leader>に設定するキー
-let mapleader = "<Space>"
+let mapleader = " "
 
 noremap j gj
 noremap k gk
