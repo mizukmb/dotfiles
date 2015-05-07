@@ -155,6 +155,10 @@ filetype plugin indent on
 
 
 " キーマッピング
+
+" <leader>に設定するキー
+let mapleader = "<Space>"
+
 noremap j gj
 noremap k gk
 noremap <S-h> g^
@@ -168,15 +172,17 @@ noremap ;  :
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
-nnoremap <Space>n  :NERDTree<CR>
-nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
-nnoremap <Space>tl :vs<CR>:TweetVimHomeTimeline<CR>
-nnoremap <Space>tm :vs<CR>:TweetVimMentions<CR>
-nnoremap <Space>ts :TweetVimSay<CR>
-nnoremap <Space>o  :OtenkiTomorrow<CR>
-nnoremap <Space>oh :Otenki hachinohe<CR>
+nnoremap <Leader>n  :NERDTree<CR>
+nnoremap <Leader>v  :vs<CR>:<C-u>VimShell<CR>
+nnoremap <Leader>tl :vs<CR>:TweetVimHomeTimeline<CR>
+nnoremap <Leader>tm :vs<CR>:TweetVimMentions<CR>
+nnoremap <Leader>ts :TweetVimSay<CR>
+nnoremap <Leader>o  :OtenkiTomorrow<CR>
+nnoremap <Leader>oh :Otenki hachinohe<CR>
 
 inoremap <C-f> <C-x><C-o>
+inoremap <silent> <C-u> <Esc>u<Insert>
+inoremap <silent> <C-r> <Esc><C-r><Insert>
 
 vmap <Enter> <Plug>(EasyAlign)
 
