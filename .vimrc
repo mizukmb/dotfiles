@@ -172,6 +172,13 @@ noremap ;  :
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
+nnoremap s <Nop>
+nnoremap <silent> ss :split<CR>
+nnoremap <silent> sv :vsplit<CR>
+nnoremap <silent> sh <C-w>h
+nnoremap <silent> sj <C-w>j
+nnoremap <silent> sk <C-w>k
+nnoremap <silent> sl <C-w>l
 nnoremap <Leader>n  :NERDTree<CR>
 nnoremap <Leader>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Leader>tl :vs<CR>:TweetVimHomeTimeline<CR>
@@ -183,6 +190,7 @@ nnoremap <Leader>oh :Otenki hachinohe<CR>
 inoremap <C-f> <C-x><C-o>
 inoremap <silent> <C-u> <Esc>u<Insert>
 inoremap <silent> <C-r> <Esc><C-r><Insert>
+inoremap <silent> <C-p> <Esc>p<Insert>
 
 vmap <Enter> <Plug>(EasyAlign)
 
