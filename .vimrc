@@ -296,7 +296,7 @@ let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'mode_map':    {'c': 'NORMAL'},
             \ 'active':      {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['mocho'], ['otenki'] ]
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['otenki'], ['mocho'] ]
             \ },
             \ 'component_function': {
             \   'modified':         'MyModified',
@@ -358,11 +358,11 @@ function! MyMode()
 endfunction
 
 function! MyMocho()
-    return g:StatusMocho()
+    return winwidth(0) > 70 ? StatusMocho() : ''
 endfunction
 
 function! MyOtenki()
-    return MyStatusOtenki()
+    return winwidth(0) > 70 ? MyStatusOtenki() : ''
 endfunction
 " }}}
 
