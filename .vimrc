@@ -226,6 +226,11 @@ set history=100
 set completeopt=menuone,menu
 
 
+" Uniteの設定
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable =1
+let g:unite_source_file_mru_limit = 200
+
 " TweetVim関係
 " 1ページに表示する最大数
 let g:tweetvim_tweet_per_page = 50
