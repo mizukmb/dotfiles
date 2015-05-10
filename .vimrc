@@ -6,7 +6,6 @@ augroup vimrc
     autocmd!
 augroup END
 
-
 filetype off
 filetype plugin indent off
 
@@ -14,7 +13,6 @@ filetype plugin indent off
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
-
 
 " NeoBudle関係 {{{
 " NeoBundleがない場合、インストールする
@@ -132,7 +130,6 @@ NeoBundleLazy 'vim-jp/vim-go-extra', {
             \ }
 " NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
 
-
 " TweetVim
 NeoBundleLazy 'basyura/twibill.vim'
 NeoBundleLazy 'basyura/TweetVim', {
@@ -155,7 +152,6 @@ filetype plugin indent on
 
 
 " キーマッピング
-
 " <leader>に設定するキー
 let mapleader = " "
 
@@ -197,6 +193,7 @@ vmap <Enter> <Plug>(EasyAlign)
 imap <F2> <nop>
 set pastetoggle=<F2>
 
+
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
 set number       "行番号表示
 set laststatus=2 "ステータスラインを常に表示
@@ -208,11 +205,9 @@ set smartindent
 " <BS>で何でも消せる
 set backspace=start,eol,indent
 
-
 " タブスペースのデフォルトは半角スペース4文字
 set tabstop=4 shiftwidth=4 softtabstop=4
 set expandtab
-
 
 " 検索系
 set ignorecase  "検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -221,14 +216,11 @@ set wrapscan    "検索時に最後まで行ったら最初に戻る
 set noincsearch "検索文字列入力時に順次対象文字列にヒットさせない
 set nohlsearch  "検索結果文字列の非ハイライト表示
 
-
 " カレント行に下線を表示する
 set cursorline
 
-
 " コマンド履歴
 set history=100
-
 
 " 補完時にプレビューウインドウを表示させない
 set completeopt=menuone,menu
@@ -272,7 +264,6 @@ autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ exe "normal g`\"" |
             \ endif
 
-
 " Go setting
 function! s:golang_settings()
     setlocal noexpandtab
@@ -282,7 +273,6 @@ function! s:golang_settings()
     let g:syntatic_go_checkers = ['go', 'golint']
 endfunction
 autocmd vimrc FileType go call <SID>golang_settings()
-
 
 " Ruby settig
 function! s:ruby_settings()
