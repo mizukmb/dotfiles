@@ -286,6 +286,12 @@ function! s:ruby_settings()
 endfunction
 autocmd vimrc FileType ruby call <SID>ruby_settings()
 
+" HTML setting
+function! s:html_settings()
+    setlocal tabstop=2 shiftwidth=2 softtabstop=2
+endfunction
+autocmd vimrc FileType html call <SID>html_settings()
+
 " lightlineの設定 {{{
 let g:lightline = {
             \ 'colorscheme': 'wombat',
