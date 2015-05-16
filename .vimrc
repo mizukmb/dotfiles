@@ -107,6 +107,12 @@ NeoBundle 'Shougo/neocomplete.vim'
 " テキストを囲うもの("",'',{}など)の編集を補助する
 NeoBundle 'tpope/vim-surround'
 
+" rust公式プラグイン（インデント、シンタックスハイライト）
+NeoBundle 'rust-lang/rust.vim'
+
+" rustdoc
+NeoBundle 'rhysd/rust-doc.vim'
+
 " Rubyに特化した補完機能
 NeoBundleLazy 'marcus/rsense', {
             \ 'autoload' : {
@@ -129,6 +135,17 @@ NeoBundleLazy 'vim-jp/vim-go-extra', {
             \ 'autoload' : { 'filetypes' : 'go' }
             \ }
 " NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
+
+" Rustの補完
+NeoBundleLazy 'phildawes/racer', {
+            \ 'build' : {
+            \   'mac'  : 'cargo build --release',
+            \   'unix' : 'cargo build --release',
+            \   },
+            \ 'autoload' : {
+            \   'filetypes' : 'rust',
+            \   },
+            \ }
 
 " TweetVim
 NeoBundleLazy 'basyura/twibill.vim'
@@ -263,6 +280,9 @@ if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]>\w*\|\h\w*::'
+
+" racerの設定
+let $RUST_SRC_PATH = expand('/usr/local/Cellar/rust/1.0.0-alpha.2')
 
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
