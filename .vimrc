@@ -113,6 +113,9 @@ NeoBundle 'rust-lang/rust.vim'
 " rustdoc
 NeoBundle 'rhysd/rust-doc.vim'
 
+" vim-quickrun
+NeoBundle 'thinca/vim-quickrun'
+
 " Rubyに特化した補完機能
 NeoBundleLazy 'marcus/rsense', {
             \ 'autoload' : {
@@ -199,6 +202,7 @@ nnoremap <Leader>tm :vs<CR>:TweetVimMentions<CR>
 nnoremap <Leader>ts :TweetVimSay<CR>
 nnoremap <Leader>o  :OtenkiTomorrow<CR>
 nnoremap <Leader>oh :Otenki hachinohe<CR>
+nnoremap <Leader>q  :QuickRun<CR>
 
 inoremap <C-f> <C-x><C-o>
 inoremap <silent> <C-u> <Esc>u<Insert>
@@ -284,6 +288,13 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]>\w*\|\h\w*::'
 " racerの設定
 let $RUST_SRC_PATH = expand('/usr/local/Cellar/rust/1.0.0-alpha.2')
 
+" vim-quickrunの設定
+let g:quickrun_config = {
+            \ "_" : {
+            \   "runner"                    : "vimproc",
+            \   "runner/vimproc/updatetime" : 60
+            \ },
+            \ }
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ exe "normal g`\"" |
