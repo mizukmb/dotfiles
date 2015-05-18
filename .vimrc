@@ -1,3 +1,6 @@
+set all&
+filetype detect
+
 set encoding=utf-8
 
 scriptencoding utf-8
@@ -13,6 +16,7 @@ filetype plugin indent off
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
+
 
 " NeoBudle関係 {{{
 " NeoBundleがない場合、インストールする
