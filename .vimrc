@@ -181,6 +181,8 @@ let mapleader = " "
 
 noremap j gj
 noremap k gk
+noremap gj j
+noremap gk k
 noremap <S-h> g^
 noremap <S-j> }
 noremap <S-k> {
@@ -189,6 +191,7 @@ noremap m  %
 noremap %  m
 noremap :  ;
 noremap ;  :
+noremap / /\v
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
@@ -211,7 +214,7 @@ nnoremap <Leader>q  :QuickRun<CR>
 inoremap <C-f> <C-x><C-o>
 inoremap <silent> <C-u> <Esc>u<Insert>
 inoremap <silent> <C-r> <Esc><C-r><Insert>
-inoremap <silent> <C-p> <Esc>p<Insert>
+inoremap <silent> <C-p> <Esc>P<Insert>
 
 vmap <Enter> <Plug>(EasyAlign)
 
