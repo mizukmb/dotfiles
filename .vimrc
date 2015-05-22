@@ -253,6 +253,10 @@ set history=100
 " 補完時にプレビューウインドウを表示させない
 set completeopt=menuone,menu
 
+"タブ、空白、改行の可視化
+set list
+set listchars=eol:¶,tab:▸\
+
 
 " Uniteの設定
 let g:unite_enable_start_insert=1
@@ -302,6 +306,8 @@ let g:quickrun_config = {
             \   "runner/vimproc/updatetime" : 60
             \ },
             \ }
+
+
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ exe "normal g`\"" |
