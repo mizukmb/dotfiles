@@ -233,8 +233,8 @@ set smartindent
 " <BS>で何でも消せる
 set backspace=start,eol,indent
 
-" タブスペースのデフォルトは半角スペース4文字
-set tabstop=4 shiftwidth=4 softtabstop=4
+" タブスペースのデフォルトは半角スペース2文字
+set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 
 " 検索系
