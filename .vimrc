@@ -176,6 +176,7 @@ filetype plugin indent on
 
 
 " キーマッピング
+" {{{
 " <leader>に設定するキー
 let mapleader = " "
 
@@ -220,8 +221,11 @@ vmap <Enter> <Plug>(EasyAlign)
 
 imap <F2> <nop>
 set pastetoggle=<F2>
+" }}}
 
 
+" 各種設定
+" {{{
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
 set number       "行番号表示
 set laststatus=2 "ステータスラインを常に表示
@@ -257,7 +261,13 @@ set completeopt=menuone,menu
 set list
 set listchars=eol:¶,tab:▸\
 
+" 折りたたみ機能の有効化
+set foldmethod=marker
+" }}}
 
+
+" プラグイン設定
+" {{{
 " Uniteの設定
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
@@ -308,36 +318,7 @@ let g:quickrun_config = {
             \ },
             \ }
 
-
-" ファイルを開いた際に、前回終了時の行で起動
-autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-            \ exe "normal g`\"" |
-            \ endif
-
-" Go setting
-function! s:golang_settings()
-    setlocal noexpandtab
-    let g:syntatic_mode_map = {
-                \ 'active_filetypes' : [ 'go' ] 
-                \ }
-    let g:syntatic_go_checkers = ['go', 'golint']
-endfunction
-autocmd vimrc FileType go call <SID>golang_settings()
-
-" Ruby settig
-function! s:ruby_settings()
-    setlocal tabstop=2 shiftwidth=2 softtabstop=2 
-    let g:rsenseUseOmniFunc = 1
-endfunction
-autocmd vimrc FileType ruby call <SID>ruby_settings()
-
-" HTML setting
-function! s:html_settings()
-    setlocal tabstop=2 shiftwidth=2 softtabstop=2
-endfunction
-autocmd vimrc FileType html call <SID>html_settings()
-
-" lightlineの設定 {{{
+" lightlineの設定
 let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'mode_map':    {'c': 'NORMAL'},
@@ -410,5 +391,37 @@ endfunction
 function! MyOtenki()
     return winwidth(0) > 70 ? MyStatusOtenki() : ''
 endfunction
+" }}}
+
+
+" その他設定
+" {{{
+" ファイルを開いた際に、前回終了時の行で起動
+autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+            \ exe "normal g`\"" |
+            \ endif
+
+" Go setting
+function! s:golang_settings()
+    setlocal noexpandtab
+    let g:syntatic_mode_map = {
+                \ 'active_filetypes' : [ 'go' ] 
+                \ }
+    let g:syntatic_go_checkers = ['go', 'golint']
+endfunction
+autocmd vimrc FileType go call <SID>golang_settings()
+
+" Ruby settig
+function! s:ruby_settings()
+    setlocal tabstop=2 shiftwidth=2 softtabstop=2 
+    let g:rsenseUseOmniFunc = 1
+endfunction
+autocmd vimrc FileType ruby call <SID>ruby_settings()
+
+" HTML setting
+function! s:html_settings()
+    setlocal tabstop=2 shiftwidth=2 softtabstop=2
+endfunction
+autocmd vimrc FileType html call <SID>html_settings()
 " }}}
 
