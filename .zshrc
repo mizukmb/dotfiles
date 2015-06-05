@@ -117,3 +117,4 @@ bindkey '^m' do_enter
 
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PYTHONPATH=/Library/Python/2.7/site-packages
