@@ -257,9 +257,9 @@ set history=100
 " 補完時にプレビューウインドウを表示させない
 set completeopt=menuone,menu
 
-"タブ、空白、改行の可視化
-set list
-set listchars=eol:¶,tab:▸\
+" "タブ、空白、改行の可視化
+" set list
+" set listchars=eol:¶
 
 " 折りたたみ機能の有効化
 set foldmethod=marker
