@@ -138,9 +138,12 @@ NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
             \ }
 
 " Golangの設定（Fmt, Inport, Godocコマンドの提供）
-NeoBundleLazy 'vim-jp/vim-go-extra', {
-            \ 'autoload' : { 'filetypes' : 'go' }
-            \ }
+NeoBundleLazy 'fatih/vim-go', {
+      \ 'autoload' : { 'filetype' : 'go' }
+      \ }
+" NeoBundleLazy 'vim-jp/vim-go-extra', {
+"             \ 'autoload' : { 'filetypes' : 'go' }
+"             \ }
 " NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
 
 " Rustの補完
@@ -309,6 +312,15 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]>\w*\|\h\w*::'
 " racerの設定
 let $RUST_SRC_PATH = expand('/usr/local/Cellar/rust/1.0.0-alpha.2')
 
+"vim-goの設定
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 " vim-quickrunの設定
 let g:quickrun_config = {
             \ "_" : {
@@ -396,6 +408,10 @@ endfunction
 
 " その他設定
 " {{{
+
+" Go
+autocmd vimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
+
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ exe "normal g`\"" |
