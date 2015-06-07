@@ -136,7 +136,7 @@ NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
 
 " Golangの設定（Fmt, Inport, Godocコマンドの提供）
 NeoBundleLazy 'fatih/vim-go', {
-      \ 'autoload' : { 'filetype' : 'go' }
+      \ 'autoload' : { 'filetypes' : 'go' }
       \ }
 " NeoBundleLazy 'vim-jp/vim-go-extra', {
 "             \ 'autoload' : { 'filetypes' : 'go' }
