@@ -15,6 +15,52 @@ if has('vim_starting')
 endif
 
 
+" 各種設定
+" {{{
+" 表示系（ステータスラインの表示はlightlineプラグインが優先される）
+set number       "行番号表示
+set laststatus=2 "ステータスラインを常に表示
+
+"カラー表示
+syntax enable
+"オートインデント
+set smartindent
+" <BS>で何でも消せる
+set backspace=start,eol,indent
+
+" タブスペースのデフォルトは半角スペース2文字
+set tabstop=2 shiftwidth=2 softtabstop=2
+set expandtab
+
+" 検索系
+set ignorecase  "検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set smartcase   "検索文字列に大文字が含まれている場合は区別して検索する
+set wrapscan    "検索時に最後まで行ったら最初に戻る
+set noincsearch "検索文字列入力時に順次対象文字列にヒットさせない
+set nohlsearch  "検索結果文字列の非ハイライト表示
+
+" カレント行に下線を表示する
+set cursorline
+
+" コマンド履歴
+set history=100
+
+" 補完時にプレビューウインドウを表示させない
+set completeopt=menuone,menu
+
+" "タブ、空白、改行の可視化
+" set list
+" set listchars=eol:¶
+
+" 折りたたみ機能の有効化
+set foldmethod=marker
+
+" Go
+autocmd vimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
+
+" }}}
+
+
 " NeoBudle関係 {{{
 " NeoBundleがない場合、インストールする
 if !isdirectory(expand('~/.vim/bundle'))
@@ -224,48 +270,6 @@ set pastetoggle=<F2>
 " }}}
 
 
-" 各種設定
-" {{{
-" 表示系（ステータスラインの表示はlightlineプラグインが優先される）
-set number       "行番号表示
-set laststatus=2 "ステータスラインを常に表示
-
-"カラー表示
-syntax enable
-"オートインデント
-set smartindent
-" <BS>で何でも消せる
-set backspace=start,eol,indent
-
-" タブスペースのデフォルトは半角スペース2文字
-set tabstop=2 shiftwidth=2 softtabstop=2
-set expandtab
-
-" 検索系
-set ignorecase  "検索文字列が小文字の場合は大文字小文字を区別なく検索する
-set smartcase   "検索文字列に大文字が含まれている場合は区別して検索する
-set wrapscan    "検索時に最後まで行ったら最初に戻る
-set noincsearch "検索文字列入力時に順次対象文字列にヒットさせない
-set nohlsearch  "検索結果文字列の非ハイライト表示
-
-" カレント行に下線を表示する
-set cursorline
-
-" コマンド履歴
-set history=100
-
-" 補完時にプレビューウインドウを表示させない
-set completeopt=menuone,menu
-
-" "タブ、空白、改行の可視化
-" set list
-" set listchars=eol:¶
-
-" 折りたたみ機能の有効化
-set foldmethod=marker
-" }}}
-
-
 " プラグイン設定
 " {{{
 " Uniteの設定
@@ -405,9 +409,6 @@ endfunction
 
 " その他設定
 " {{{
-
-" Go
-autocmd vimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 
 " ファイルを開いた際に、前回終了時の行で起動
 autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
