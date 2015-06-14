@@ -2,7 +2,7 @@ set encoding=utf-8
 
 scriptencoding utf-8
 
-augroup vimrc
+augroup myVimrc
     autocmd!
 augroup END
 
@@ -56,7 +56,7 @@ set completeopt=menuone,menu
 set foldmethod=marker
 
 " Go
-autocmd vimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
+autocmd myVimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 
 " }}}
 
@@ -410,26 +410,27 @@ endfunction
 " {{{
 
 " ファイルを開いた際に、前回終了時の行で起動
-autocmd vimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+autocmd myVimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ exe "normal g`\"" |
             \ endif
 
 " Go setting
 function! s:golang_settings()
+    " Go言語はハードタブ推奨
     setlocal noexpandtab
     let g:syntatic_mode_map = {
                 \ 'active_filetypes' : [ 'go' ] 
                 \ }
     let g:syntatic_go_checkers = ['go', 'golint']
 endfunction
-autocmd vimrc FileType go call <SID>golang_settings()
+autocmd myVimrc FileType go call <SID>golang_settings()
 
 " Ruby settig
 function! s:ruby_settings()
     setlocal tabstop=2 shiftwidth=2 softtabstop=2 
     let g:rsenseUseOmniFunc = 1
 endfunction
-autocmd vimrc FileType ruby call <SID>ruby_settings()
+autocmd myVimrc FileType ruby call <SID>ruby_settings()
 
 " HTML setting
 function! s:html_settings()
@@ -438,6 +439,6 @@ function! s:html_settings()
     "       \ 'outputter' : 'browser',
     "       \ }
 endfunction
-autocmd vimrc FileType html call <SID>html_settings()
+autocmd myVimrc FileType html call <SID>html_settings()
 " }}}
 
