@@ -214,6 +214,9 @@ NeoBundleLazy 'basyura/TweetVim', {
             \      }
             \ }
 
+" Elixir のシンタックスハイライトやFileTypeの設定等
+NeoBundle "elixir-lang/vim-elixir"
+
 call neobundle#end()
 
 " required
