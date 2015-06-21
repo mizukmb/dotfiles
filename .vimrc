@@ -55,6 +55,9 @@ set completeopt=menuone,menu
 " 折りたたみ機能の有効化
 set foldmethod=marker
 
+" 隠れバッファの有効化
+set hidden
+
 " Go
 autocmd myVimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 
