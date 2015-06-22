@@ -80,6 +80,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 " ここにインストールしたいプラグインのリストを書く
 " Unite
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'h1mesuke/unite-outline'
 
 " Vimで非同期処理を実現する
