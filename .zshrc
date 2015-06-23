@@ -10,6 +10,7 @@ ZSH_THEME="miloshadzic"
 # alias
 alias gti='git'
 alias vimrc='vim ~/.vimrc'
+alias ql='qlmanage -p'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
