@@ -221,6 +221,9 @@ NeoBundleLazy 'basyura/TweetVim', {
 " Elixir のシンタックスハイライトやFileTypeの設定等
 NeoBundle "elixir-lang/vim-elixir"
 
+" Gist
+NeoBundle "mattn/gist-vim"
+
 call neobundle#end()
 
 " required
@@ -342,6 +345,11 @@ let g:quickrun_config = {
             \   "outputter/buffer/running_mark" : mocho#echo()
             \ },
             \ }
+
+" gist-vimの設定
+let g:github_user = 'mizukmb'
+let g:gist_curl_options = "-k"
+let g:gist_detect_filetype = 1
 
 " lightlineの設定
 let g:lightline = {
