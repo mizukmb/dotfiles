@@ -11,6 +11,7 @@ ZSH_THEME="miloshadzic"
 alias gti='git'
 alias vimrc='vim ~/.vimrc'
 alias ql='qlmanage -p'
+alias mdlink='~/dev/shellscript/mdlink'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -119,3 +120,18 @@ bindkey '^m' do_enter
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PYTHONPATH=/Library/Python/2.7/site-packages
+
+[[ -s "/Users/mizushiri/.gvm/scripts/gvm" ]] && source "/Users/mizushiri/.gvm/scripts/gvm"
+
+# [vim から :shell で抜けたときにわかりやすくする](http://qiita.com/dayflower/items/06cba1bc3d8bf5403659)
+[[ -n "$VIMRUNTIME" ]] && \
+    PROMPT="%{${fg[white]}${bg[blue]}%}(vim)%{${reset_color}%} $PROMPT"
+
+# Cliから辞書を開く
+function dict {
+  if [ $# -eq 0 ]; then
+    echo "Usage: dict WORD" 1>&2
+    return 1
+  fi
+  open dict://$@
+}
