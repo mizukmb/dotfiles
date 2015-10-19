@@ -17,6 +17,9 @@ endif
 
 " 各種設定
 " {{{
+"
+"
+"
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
 set number       "行番号表示
 set laststatus=2 "ステータスラインを常に表示
@@ -65,6 +68,7 @@ autocmd myVimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 
 
 " NeoBudle関係 {{{
+"
 " NeoBundleがない場合、インストールする
 if !isdirectory(expand('~/.vim/bundle'))
     silent call mkdir(expand('~/.vim/bundle'), 'p')
@@ -97,7 +101,7 @@ NeoBundle 'Shougo/vimshell.vim', {
             \ 'depends' :
             \     ['Shougo/vimproc.vim']
             \ }
-
+,
 " Vimでweb-apiを使用する
 NeoBundle 'mattn/webapi-vim'
 
@@ -133,8 +137,11 @@ NeoBundle 'deris/vim-shot-f'
 NeoBundle 'mattn/emmet-vim'
 
 " カラースキーム
+NeoBundle 'sjl/badwolf'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'jpo/vim-railscasts-theme'
 
 " 括弧補完
 NeoBundle 'jiangmiao/auto-pairs'
@@ -142,7 +149,7 @@ NeoBundle 'jiangmiao/auto-pairs'
 " 天気予報
 NeoBundle 'mizukmb/otenki.vim', {
             \ 'depends' : [
-            \   'mattn/webapi-vim'
+            \   'mattn/webapi-vim',
             \   ]
             \ }
 
@@ -170,23 +177,20 @@ NeoBundle 'thinca/vim-quickrun'
 " Rubyに特化した補完機能
 NeoBundleLazy 'marcus/rsense', {
             \ 'autoload' : {
-            \   'filetypes' : 'ruby'
-            \   }
+            \   'filetypes' : 'ruby',
+            \   },
             \ }
 
 " RsenseをNeocomplteで使うため
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', {
+NeoBundle 'supermomonga/neocomplete-rsense.vim', {
             \ 'depends' :
             \   ['Shougo/neocomplete.vim',
             \    'marcus/rsense'],
-            \ 'autoload' : {
-            \   'filetypes' : 'ruby'
-            \   }
             \ }
 
 " Golangの設定（Fmt, Inport, Godocコマンドの提供）
 NeoBundleLazy 'fatih/vim-go', {
-      \ 'autoload' : { 'filetypes' : 'go' }
+      \ 'autoload' : { 'filetypes' : 'go' },
       \ }
 " NeoBundleLazy 'vim-jp/vim-go-extra', {
 "             \ 'autoload' : { 'filetypes' : 'go' }
@@ -225,6 +229,7 @@ NeoBundle "elixir-lang/vim-elixir"
 NeoBundle "mattn/gist-vim"
 
 call neobundle#end()
+
 
 " required
 filetype plugin indent on
@@ -292,6 +297,7 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 
+
 " TweetVim関係
 " 1ページに表示する最大数
 let g:tweetvim_tweet_per_page = 50
@@ -302,8 +308,8 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 " カラースキーム
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+colorscheme railscasts
+highlight Normal ctermbg=none
 
 " otenki.vimの設定
 let g:otenki_cityname_data = 'hakodate'
@@ -315,6 +321,7 @@ let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 " Rsenseの設定
 let g:rsenseHome = '/usr/local/lib/rsense-0.3'
 let g:rsenseUseOmniFunc = 1
+
 
 " neocompleteの設定
 let g:acp_enableAtStartup = 0
@@ -419,6 +426,8 @@ endfunction
 function! MyMocho()
     return winwidth(0) > 70 ? StatusMocho() : ''
 endfunction
+
+
 
 " function! MyOtenki()
 "     return winwidth(0) > 70 ? MyStatusOtenki() : ''
