@@ -69,6 +69,7 @@ autocmd myVimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 
 " NeoBudle関係 {{{
 "
+"
 " NeoBundleがない場合、インストールする
 if !isdirectory(expand('~/.vim/bundle'))
     silent call mkdir(expand('~/.vim/bundle'), 'p')
@@ -101,7 +102,7 @@ NeoBundle 'Shougo/vimshell.vim', {
             \ 'depends' :
             \     ['Shougo/vimproc.vim']
             \ }
-,
+
 " Vimでweb-apiを使用する
 NeoBundle 'mattn/webapi-vim'
 
@@ -228,6 +229,9 @@ NeoBundle "elixir-lang/vim-elixir"
 " Gist
 NeoBundle "mattn/gist-vim"
 
+" Unite ghq
+NeoBundle "sorah/unite-ghq"
+
 call neobundle#end()
 
 
@@ -240,6 +244,7 @@ filetype plugin indent on
 " {{{
 " <leader>に設定するキー
 let mapleader = " "
+
 
 noremap j gj
 noremap k gk
@@ -272,9 +277,10 @@ nnoremap <Leader>ts :TweetVimSay<CR>
 nnoremap <Leader>o  :OtenkiTomorrow<CR>
 nnoremap <Leader>oh :Otenki hachinohe<CR>
 nnoremap <Leader>q  :QuickRun<CR>
-nnoremap <Leader>uf :Unite<Space>file<CR>
-nnoremap <Leader>um :Unite<Space>file_mru<CR>
 nnoremap <Leader>ub :Unite<Space>buffer<CR>
+nnoremap <Leader>uf :Unite<Space>file<CR>
+nnoremap <Leader>ug :Unite<Space>ghq<CR>
+nnoremap <Leader>um :Unite<Space>file_mru<CR>
 nnoremap <Leader>uy :Unite<Space>yank<CR>
 
 
