@@ -17,9 +17,7 @@ endif
 
 " 各種設定
 " {{{
-"
-"
-"
+
 " 表示系（ステータスラインの表示はlightlineプラグインが優先される）
 set number       "行番号表示
 set laststatus=2 "ステータスラインを常に表示
@@ -67,9 +65,8 @@ autocmd myVimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 " }}}
 
 
-" NeoBudle関係 {{{
-"
-"
+" NeoBudle関係
+" {{{
 " NeoBundleがない場合、インストールする
 if !isdirectory(expand('~/.vim/bundle'))
     silent call mkdir(expand('~/.vim/bundle'), 'p')
@@ -242,6 +239,7 @@ filetype plugin indent on
 
 " キーマッピング
 " {{{
+
 " <leader>に設定するキー
 let mapleader = " "
 
@@ -298,6 +296,7 @@ set pastetoggle=<F2>
 
 " プラグイン設定
 " {{{
+
 " Uniteの設定
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
