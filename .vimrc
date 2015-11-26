@@ -285,7 +285,7 @@ nnoremap <Leader>uy :Unite<Space>yank<CR>
 inoremap <C-f> <C-x><C-o>
 inoremap <silent> <C-u> <Esc>u<Insert>
 inoremap <silent> <C-r> <Esc><C-r><Insert>
-inoremap <silent> <C-p> <Esc>P<Insert>
+inoremap <silent> <C-p> <Esc>p<Insert>
 
 vmap <Enter> <Plug>(EasyAlign)
 
