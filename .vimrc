@@ -46,8 +46,15 @@ set wrapscan    "検索時に最後まで行ったら最初に戻る
 set noincsearch "検索文字列入力時に順次対象文字列にヒットさせない
 set nohlsearch  "検索結果文字列の非ハイライト表示
 
-" カレント行に下線を表示する
+" 現在行に下線を表示する
 set cursorline
+function! s:highlight_settings()
+  highlight CursorLine ctermbg=NONE
+  highlight CursorIME ctermbg=NONE
+  highlight CursorLineNr ctermbg=234
+  highlight LineNr ctermbg=NONE
+endfunction
+autocmd myVimrc ColorScheme * call <SID>highlight_settings()
 
 " コマンド履歴
 set history=100
