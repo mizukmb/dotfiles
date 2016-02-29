@@ -10,16 +10,10 @@ filetype off
 filetype plugin indent off
 
 
-let s:dein_dir = expand('~/.cache/dein')
-
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
+
 
 " 各種設定
 " {{{
@@ -71,24 +65,141 @@ autocmd myVimrc BufRead,BufNew,BufNewFile *.go setlocal filetype=go
 " }}}
 
 
-" dein関係
+" NeoBudle関係
 " {{{
-call dein#begin(s:dein_dir)
-
-let s:toml = '~/dotfiles/dein.toml'
-" let s:lazy_toml = '~/dotfiles/dein_lazy.toml'
-
-if dein#load_cache([expand('<sfile>'), s:toml])
-  call dein#load_toml(s:toml, {'lazy': 0})
-  " call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#save_cache()
+" NeoBundleがない場合、インストールする
+if !isdirectory(expand('~/.vim/bundle'))
+    silent call mkdir(expand('~/.vim/bundle'), 'p')
+    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    echo "Installed neobundle.vim"
+    if v:shell_error
+        echorerr "neobundle.vim intallation has failed!"
+    endif
 endif
 
-call dein#end()
+call neobundle#begin(expand('~/.vim/bundle'))
 
-if dein#check_install()
-  call dein#install()
-endif
+" ここにインストールしたいプラグインのリストを書く
+" Unite
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'h1mesuke/unite-outline'
+
+" Vimで非同期処理を実現する
+NeoBundle 'Shougo/vimproc.vim', {
+            \ 'build' : {
+            \   'cygwin' : 'make -f make_cygwin.mak',
+            \   'mac'    : 'make -f make_mac.mak',
+            \   'unix'   : 'make -f make_unix.mak',
+            \   }
+            \ }
+
+" vimshell
+NeoBundle 'Shougo/vimshell.vim', {
+            \ 'depends' :
+            \     ['Shougo/vimproc.vim']
+            \ }
+
+" Vimでweb-apiを使用する
+NeoBundle 'mattn/webapi-vim'
+
+" Vimからブラウザを開く
+NeoBundle 'tyru/open-browser.vim'
+
+" 列整形
+NeoBundle 'junegunn/vim-easy-align'
+
+" lightline.vim（ステータスライン表示プラグイン）
+NeoBundle 'itchyny/lightline.vim'
+
+" fugitive.vim（Git関連。ステータスラインにブランチ表示させているのもこれ）
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+
+" コメントON/OFFを手軽に実行
+NeoBundle 'tomtom/tcomment_vim'
+
+" rails便利プラグイン（modelとかviewとかにすぐ移動できたりする）
+NeoBundle 'tpope/vim-rails'
+
+" ツリー表示
+NeoBundle 'scrooloose/nerdtree'
+
+" RubyやVim Scriptでend(endif)等を自動的につけてくれる
+NeoBundle 'tpope/vim-endwise'
+
+" fの候補をハイライト
+NeoBundle 'deris/vim-shot-f'
+
+" カラースキーム
+NeoBundle 'sjl/badwolf'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'jpo/vim-railscasts-theme'
+
+" 括弧補完
+NeoBundle 'jiangmiao/auto-pairs'
+
+" 天気予報
+NeoBundle 'mizukmb/otenki.vim', {
+            \ 'depends' : [
+            \   'mattn/webapi-vim',
+            \   ]
+            \ }
+
+" mocho.vim（めっちゃすごい！！！！）
+NeoBundle 'mizukmb/mocho'
+
+" syntacs check
+NeoBundle 'scrooloose/syntastic'
+
+" 補完機能
+NeoBundle 'Shougo/neocomplete.vim'
+
+" テキストを囲うもの("",'',{}など)の編集を補助する
+NeoBundle 'tpope/vim-surround'
+
+" rust公式プラグイン（インデント、シンタックスハイライト）
+NeoBundle 'rust-lang/rust.vim'
+
+" rustdoc
+NeoBundle 'rhysd/rust-doc.vim'
+
+" vim-quickrun
+NeoBundle 'thinca/vim-quickrun'
+
+" Golangの設定（Fmt, Inport, Godocコマンドの提供）
+NeoBundleLazy 'fatih/vim-go', {
+      \ 'autoload' : { 'filetypes' : 'go' },
+      \ }
+" NeoBundleLazy 'vim-jp/vim-go-extra', {
+"             \ 'autoload' : { 'filetypes' : 'go' }
+"             \ }
+" NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
+
+" Rustの補完
+NeoBundleLazy 'phildawes/racer', {
+            \ 'build' : {
+            \   'mac'  : 'cargo build --release',
+            \   'unix' : 'cargo build --release',
+            \   },
+            \ 'autoload' : {
+            \   'filetypes' : 'rust',
+            \   },
+            \ }
+
+" Elixir のシンタックスハイライトやFileTypeの設定等
+NeoBundle "elixir-lang/vim-elixir"
+
+" Gist
+NeoBundle "mattn/gist-vim"
+
+" Unite ghq
+NeoBundle "sorah/unite-ghq"
+
+call neobundle#end()
+
 
 " required
 filetype plugin indent on
@@ -154,8 +265,17 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 
+" TweetVim関係
+" 1ページに表示する最大数
+let g:tweetvim_tweet_per_page = 50
+
+" emmitの設定
+" HTML/CSSファイルのみ有効
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
+
 " カラースキーム
-colorscheme Iceberg
+colorscheme railscasts
 highlight Normal ctermbg=none
 
 " otenki.vimの設定
@@ -177,6 +297,18 @@ let g:neocomplete#delimiter_patterns.ruby = ['::']
 " endif
 " let g:neocomplete#force_omni_input_patterns.ruby =
 "       \ '[^. *\t]\.\w*\|\h\w*::'
+
+" racerの設定
+let $RUST_SRC_PATH = expand('/usr/local/Cellar/rust/1.0.0-alpha.2')
+
+"vim-goの設定
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " vim-quickrunの設定
 let g:quickrun_config = {
@@ -200,11 +332,12 @@ let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'mode_map':    {'c': 'NORMAL'},
             \ 'active':      {
-            \   'left': [ [ 'mode', 'paste' ], ['mocho'] ]
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['mocho'] ]
             \ },
             \ 'component_function': {
             \   'modified':         'MyModified',
             \   'readonly':         'MyReadonly',
+            \   'fugitive':         'MyFugitive',
             \   'filename':         'MyFilename',
             \   'mocho':            'MyMocho',
             \   'filetype':         'MyFiletype',
@@ -232,6 +365,17 @@ function! MyFilename()
                 \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
+function! MyFugitive()
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            let _ = fugitive#head()
+            return strlen(_) ? '🍣 '._ : ''
+        endif
+    catch
+    endtry
+    return ''
+endfunction
+
 function! MyFileformat()
     return winwidth(0) > 70 ? &fileformat : ''
 endfunction
@@ -253,6 +397,10 @@ function! MyMocho()
 endfunction
 
 
+
+" function! MyOtenki()
+"     return winwidth(0) > 70 ? MyStatusOtenki() : ''
+" endfunction
 " }}}
 
 
