@@ -56,14 +56,14 @@ alias mdlink='~/dev/shellscript/mdlink'
 plugins=(git ruby osx bundler brew rails emoji-clock)
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin"
-export GOPATH=$HOME/go/third-party:$HOME/go/my-project
-export PATH=$HOME/go/third-party/bin:$HOME/go/my-project/bin:$PATH
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:$HOME/Downloads/spang-0.3.4/bin"
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 export JAVA=$JAVA_HOME/bin
+export PATH=/usr/local/texlive/2015/bin/x86_64-darwin/:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -135,3 +135,7 @@ function dict {
   fi
   open dict://$@
 }
+
+# refer to http://r7kamura.github.io/2014/06/21/ghq.html
+p() { peco | while read LINE; do $@ $LINE; done  }
+alias e='ghq list -p | p cd'
