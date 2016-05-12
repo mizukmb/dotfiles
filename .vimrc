@@ -161,6 +161,12 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
 
+" reference http://qiita.com/joker1007/items/c8962f9325a5433dc50d
+let g:unite_source_grep_command = 'ag' " unite grep のバックエンドを ag にして高速化する
+let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_max_candidates = 200
+
 " カラースキーム
 colorscheme Iceberg
 highlight Normal ctermbg=none
