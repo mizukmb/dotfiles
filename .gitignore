@@ -1,2 +1,7 @@
-*~
 *.swp
+tags
+.git/
+/.idea
+build/
+*.envrc
+*.tmp
