@@ -5,6 +5,7 @@
 - .vimrc
 - .vimshrc
 - .zshrc
+- .gitignore
 - dein.toml
 
 ## 参考サイト

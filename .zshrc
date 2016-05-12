@@ -117,11 +117,10 @@ return 0
 zle -N do_enter
 bindkey '^m' do_enter
 
-export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PYTHONPATH=/Library/Python/2.7/site-packages
 
-[[ -s "/Users/mizushiri/.gvm/scripts/gvm" ]] && source "/Users/mizushiri/.gvm/scripts/gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # [vim から :shell で抜けたときにわかりやすくする](http://qiita.com/dayflower/items/06cba1bc3d8bf5403659)
 [[ -n "$VIMRUNTIME" ]] && \
