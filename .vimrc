@@ -123,13 +123,13 @@ noremap / /\v
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
-nnoremap s <Nop>
-nnoremap <silent> ss :split<CR>
-nnoremap <silent> sv :vsplit<CR>
-nnoremap <silent> sh <C-w>h
-nnoremap <silent> sj <C-w>j
-nnoremap <silent> sk <C-w>k
-nnoremap <silent> sl <C-w>l
+" nnoremap s <Nop>
+" nnoremap <silent> ss :split<CR>
+" nnoremap <silent> sv :vsplit<CR>
+" nnoremap <silent> sh <C-w>h
+" nnoremap <silent> sj <C-w>j
+" nnoremap <silent> sk <C-w>k
+" nnoremap <silent> sl <C-w>l
 nnoremap <Leader>n  :NERDTree<CR>
 nnoremap <Leader>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Leader>o  :OtenkiTomorrow<CR>
