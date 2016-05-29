@@ -62,3 +62,6 @@ repo = 'mizukmb/mocho'
 
 [[plugins]]
 repo = 'cocopon/Iceberg.vim'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
