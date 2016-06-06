@@ -123,13 +123,13 @@ noremap / /\v
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
-nnoremap s <Nop>
-nnoremap <silent> ss :split<CR>
-nnoremap <silent> sv :vsplit<CR>
-nnoremap <silent> sh <C-w>h
-nnoremap <silent> sj <C-w>j
-nnoremap <silent> sk <C-w>k
-nnoremap <silent> sl <C-w>l
+" nnoremap s <Nop>
+" nnoremap <silent> ss :split<CR>
+" nnoremap <silent> sv :vsplit<CR>
+" nnoremap <silent> sh <C-w>h
+" nnoremap <silent> sj <C-w>j
+" nnoremap <silent> sk <C-w>k
+" nnoremap <silent> sl <C-w>l
 nnoremap <Leader>n  :NERDTree<CR>
 nnoremap <Leader>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Leader>o  :OtenkiTomorrow<CR>
@@ -137,9 +137,7 @@ nnoremap <Leader>oh :Otenki hachinohe<CR>
 nnoremap <Leader>q  :QuickRun<CR>
 nnoremap <Leader>ub :Unite<Space>buffer<CR>
 nnoremap <Leader>uf :Unite<Space>file<CR>
-nnoremap <Leader>ug :Unite<Space>ghq<CR>
 nnoremap <Leader>um :Unite<Space>file_mru<CR>
-nnoremap <Leader>uy :Unite<Space>yank<CR>
 
 inoremap <C-f> <C-x><C-o>
 inoremap <silent> <C-u> <Esc>u<Insert>
