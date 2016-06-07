@@ -65,3 +65,9 @@ repo = 'cocopon/Iceberg.vim'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
