@@ -63,8 +63,8 @@ set history=100
 set completeopt=menuone,menu
 
 " "タブ、空白、改行の可視化
-" set list
-" set listchars=eol:¶
+set list
+set listchars=eol:¬,tab:>\ ,extends:<,trail:_
 
 " 折りたたみ機能の有効化
 set foldmethod=marker
