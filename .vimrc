@@ -300,5 +300,11 @@ function! s:html_settings()
     "       \ }
 endfunction
 autocmd myVimrc FileType html call <SID>html_settings()
+
+" JSON setting
+function! s:json_settings()
+  setlocal tabstop=4 shiftwidth=4 softtabstop=4
+endfunction
+autocmd myVimrc FileType json call <SID>json_settings()
 " }}}
 
