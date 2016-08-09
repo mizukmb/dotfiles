@@ -12,6 +12,7 @@ alias gti='git'
 alias vimrc='vim ~/.vimrc'
 alias ql='qlmanage -p'
 alias mdlink='~/dev/shellscript/mdlink'
+alias nippou="github-nippou list | sed -e 's/* /- :github: /g' | pbcopy"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
