@@ -59,7 +59,7 @@ plugins=(git ruby osx bundler brew rails emoji-clock)
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:$HOME/Downloads/spang-0.3.4/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:$HOME/Downloads/spang-0.3.4/bin:$HOME/src/diy/bin"
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
