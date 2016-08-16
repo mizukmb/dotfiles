@@ -114,8 +114,6 @@ noremap k gk
 noremap gj j
 noremap gk k
 noremap <S-h> g^
-noremap <S-j> }
-noremap <S-k> {
 noremap <S-l> g$
 noremap :  ;
 noremap ;  :
