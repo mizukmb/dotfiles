@@ -71,3 +71,10 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+depends = ['nixprime/cpsm']
+
+[[plugins]]
+repo = 'nixprime/cpsm'

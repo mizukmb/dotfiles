@@ -12,6 +12,7 @@ alias gti='git'
 alias vimrc='vim ~/.vimrc'
 alias ql='qlmanage -p'
 alias mdlink='~/dev/shellscript/mdlink'
+alias nippou="github-nippou list | sed -e 's/* /- :github: /g' | pbcopy"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -58,7 +59,7 @@ plugins=(git ruby osx bundler brew rails emoji-clock)
 source $ZSH/oh-my-zsh.sh
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:$HOME/Downloads/spang-0.3.4/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:$HOME/Downloads/spang-0.3.4/bin:$HOME/src/diy/bin"
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
@@ -141,3 +142,7 @@ alias e='ghq list -p | p cd'
 
 ### Added by the Bluemix CLI
 source /usr/local/Bluemix/bx/zsh_autocomplete
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+export EDITOR=/usr/local/bin/vim
+eval "$(direnv hook zsh)"

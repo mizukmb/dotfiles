@@ -1,7 +1,13 @@
 *.swp
+*.swo
 tags
 .git/
 /.idea
 build/
 *.envrc
 *.tmp
+npm-debug.log
+.vagrant/
+.bundle/
+.DS_Store
+vendor/bundle

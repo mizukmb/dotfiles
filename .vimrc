@@ -63,8 +63,8 @@ set history=100
 set completeopt=menuone,menu
 
 " "タブ、空白、改行の可視化
-" set list
-" set listchars=eol:¶
+set list
+set listchars=eol:¬,tab:>\ ,extends:<,trail:_
 
 " 折りたたみ機能の有効化
 set foldmethod=marker
@@ -114,8 +114,6 @@ noremap k gk
 noremap gj j
 noremap gk k
 noremap <S-h> g^
-noremap <S-j> }
-noremap <S-k> {
 noremap <S-l> g$
 noremap :  ;
 noremap ;  :
@@ -123,13 +121,6 @@ noremap / /\v
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
-" nnoremap s <Nop>
-" nnoremap <silent> ss :split<CR>
-" nnoremap <silent> sv :vsplit<CR>
-" nnoremap <silent> sh <C-w>h
-" nnoremap <silent> sj <C-w>j
-" nnoremap <silent> sk <C-w>k
-" nnoremap <silent> sl <C-w>l
 nnoremap <Leader>n  :NERDTree<CR>
 nnoremap <Leader>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Leader>o  :OtenkiTomorrow<CR>
@@ -140,9 +131,6 @@ nnoremap <Leader>uf :Unite<Space>file<CR>
 nnoremap <Leader>um :Unite<Space>file_mru<CR>
 
 inoremap <C-f> <C-x><C-o>
-inoremap <silent> <C-u> <Esc>u<Insert>
-inoremap <silent> <C-r> <Esc><C-r><Insert>
-inoremap <silent> <C-p> <Esc>p<Insert>
 
 vmap <Enter> <Plug>(EasyAlign)
 
@@ -300,5 +288,11 @@ function! s:html_settings()
     "       \ }
 endfunction
 autocmd myVimrc FileType html call <SID>html_settings()
+
+" JSON setting
+function! s:json_settings()
+  setlocal tabstop=4 shiftwidth=4 softtabstop=4
+endfunction
+autocmd myVimrc FileType json call <SID>json_settings()
 " }}}
 
