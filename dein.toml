@@ -71,3 +71,6 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
