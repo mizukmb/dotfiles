@@ -138,3 +138,6 @@ function dict {
 # refer to http://r7kamura.github.io/2014/06/21/ghq.html
 p() { peco | while read LINE; do $@ $LINE; done  }
 alias e='ghq list -p | p cd'
+
+### Added by the Bluemix CLI
+source /usr/local/Bluemix/bx/zsh_autocomplete
