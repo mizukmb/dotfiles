@@ -128,6 +128,7 @@ nnoremap <Leader>oh :Otenki hachinohe<CR>
 nnoremap <Leader>q  :QuickRun<CR>
 nnoremap <Leader>ub :Unite<Space>buffer<CR>
 nnoremap <Leader>uf :Unite<Space>file<CR>
+nnoremap <Leader>ug :Unite<Space>grep<CR>
 nnoremap <Leader>um :Unite<Space>file_mru<CR>
 
 inoremap <C-f> <C-x><C-o>

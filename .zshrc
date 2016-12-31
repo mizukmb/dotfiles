@@ -11,45 +11,6 @@ ZSH_THEME="miloshadzic"
 alias gti='git'
 alias vimrc='vim ~/.vimrc'
 alias ql='qlmanage -p'
-alias mdlink='~/dev/shellscript/mdlink'
-alias nippou="github-nippou list | sed -e 's/* /- :github: /g' | pbcopy"
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to disable command auto-correction.
-# DISABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -57,32 +18,24 @@ alias nippou="github-nippou list | sed -e 's/* /- :github: /g' | pbcopy"
 plugins=(git ruby osx bundler brew rails emoji-clock)
 
 source $ZSH/oh-my-zsh.sh
-# User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:$HOME/Downloads/spang-0.3.4/bin:$HOME/src/diy/bin"
-export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin
-export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
-export JAVA=$JAVA_HOME/bin
-export PATH=/usr/local/texlive/2015/bin/x86_64-darwin/:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+# PATH {{{
+# defalut
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# etc
+paths=(
+  '$GOPATH/bin'
+  '$HOME/.rbenv/bin'
+  '$HOME/.nodebrew/current/bin'
+  '/usr/local/git/bin'
+)
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-export PATH="$HOME/.rbenv/bin:$PATH"
+for p in ${paths}; do
+  export PATH="${p}:$PATH"
+done
+# }}}
+#
 eval "$(rbenv init -)"
 
 # 入力したコマンドが存在せず、かつディレクトリ名と一致するなら、ディレクトリに cd する
@@ -99,33 +52,28 @@ setopt pushd_ignore_dups
 
 # Enterで自動ls, git status
 function do_enter() {
-if [ -n "$BUFFER" ]; then
-  zle accept-line
-  return 0
-fi
-echo
-ls
-# ↓おすすめ
-# ls_abbrev
-if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+  if [ -n "$BUFFER" ]; then
+    zle accept-line
+    return 0
+  fi
   echo
-  echo -e "\e[0;33m--- git status ---\e[0m"
-  git status -sb
-fi
-zle reset-prompt
-return 0
+  ls
+  # ↓おすすめ
+  # ls_abbrev
+  if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+    echo
+    echo -e "\e[0;33m--- git status ---\e[0m"
+    git status -sb
+  fi
+  zle reset-prompt
+  return 0
 }
 zle -N do_enter
 bindkey '^m' do_enter
 
-export PATH=/usr/local/sbin:$PATH
-export PYTHONPATH=/Library/Python/2.7/site-packages
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
 # [vim から :shell で抜けたときにわかりやすくする](http://qiita.com/dayflower/items/06cba1bc3d8bf5403659)
 [[ -n "$VIMRUNTIME" ]] && \
-    PROMPT="%{${fg[white]}${bg[blue]}%}(vim)%{${reset_color}%} $PROMPT"
+  PROMPT="%{${fg[white]}${bg[blue]}%}(vim)%{${reset_color}%} $PROMPT"
 
 # Cliから辞書を開く
 function dict {
@@ -139,10 +87,45 @@ function dict {
 # refer to http://r7kamura.github.io/2014/06/21/ghq.html
 p() { peco | while read LINE; do $@ $LINE; done  }
 alias e='ghq list -p | p cd'
+alias eff='ghq list -p feedforce | p cd'
 
-### Added by the Bluemix CLI
-source /usr/local/Bluemix/bx/zsh_autocomplete
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 
 export EDITOR=/usr/local/bin/vim
 eval "$(direnv hook zsh)"
+
+export LESS='-g -i -M -R'
+source ~/.cargo/env
+
+function peco-git-recent-branches () {
+  local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | \
+    perl -pne 's{^refs/heads/}{}' | \
+    peco)
+  if [ -n "$selected_branch" ]; then
+    BUFFER="git checkout ${selected_branch}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-git-recent-branches
+
+function peco-git-recent-all-branches () {
+  local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads refs/remotes | \
+    perl -pne 's{^refs/(heads|remotes)/}{}' | \
+    peco)
+  if [ -n "$selected_branch" ]; then
+    BUFFER="git checkout -t ${selected_branch}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N peco-git-recent-all-branches
+
+bindkey '^x^b' peco-git-recent-branches
+bindkey '^xb' peco-git-recent-all-branches
+
+# ローカル環境用の設定を読み込む
+# see: http://qiita.com/awakia/items/1d5cd440ce58ef4fb8ae
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

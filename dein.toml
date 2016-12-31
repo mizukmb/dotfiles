@@ -78,3 +78,6 @@ depends = ['nixprime/cpsm']
 
 [[plugins]]
 repo = 'nixprime/cpsm'
+
+[[plugins]]
+repo = 'vim-scripts/nginx.vim'
