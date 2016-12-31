@@ -94,10 +94,6 @@ p() { peco | while read LINE; do $@ $LINE; done  }
 alias e='ghq list -p | p cd'
 alias eff='ghq list -p feedforce | p cd'
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-
 export EDITOR=/usr/local/bin/vim
 eval "$(direnv hook zsh)"
 
