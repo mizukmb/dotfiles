@@ -43,8 +43,6 @@ HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-RPROMPT="🕛  %D-%{${fg[cyan]}%}%*%{${reset_color}%}"
-
 # 入力したコマンドが存在せず、かつディレクトリ名と一致するなら、ディレクトリに cd する
 # 例： /usr/bin と入力すると /usr/bin ディレクトリに移動
 setopt auto_cd
