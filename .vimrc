@@ -130,6 +130,7 @@ nnoremap <Leader>ub :Unite<Space>buffer<CR>
 nnoremap <Leader>uf :Unite<Space>file<CR>
 nnoremap <Leader>ug :Unite<Space>grep<CR>
 nnoremap <Leader>um :Unite<Space>file_mru<CR>
+nnoremap <Leader>m  :Memo<CR>
 
 inoremap <C-f> <C-x><C-o>
 
@@ -194,6 +195,9 @@ let g:gist_detect_filetype = 1
 
 " gitgutterの設定
 let g:gitgutter_max_signs = 100000
+
+" vim-terraformの設定
+let g:terraform_fmt_on_save = 1
 
 " lightlineの設定
 let g:lightline = {
@@ -263,6 +267,13 @@ endfunction
 autocmd myVimrc BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
             \ exe "normal g`\"" |
             \ endif
+
+" メモを開く
+function! s:myOpenMemo()
+  vsplit ~/Dropbox/scrap/memo.md
+endfunction
+
+command! Memo call s:myOpenMemo()
 
 " Go setting
 function! s:golang_settings()
