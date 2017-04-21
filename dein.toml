@@ -84,3 +84,9 @@ repo = 'vim-scripts/nginx.vim'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
+
+[[plugins]]
+repo = 'mizukmb/slackstatus.vim'
+
+[[plugins]]
+repo = 'benmills/vimux'

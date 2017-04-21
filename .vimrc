@@ -131,6 +131,16 @@ nnoremap <Leader>uf :Unite<Space>file<CR>
 nnoremap <Leader>ug :Unite<Space>grep<CR>
 nnoremap <Leader>um :Unite<Space>file_mru<CR>
 nnoremap <Leader>m  :Memo<CR>
+nnoremap <Leader>sm :SlackStatusUpdate :spiral_calendar_pad: In_a_meeting<CR>
+nnoremap <Leader>sw :SlackStatusUpdate :squidforce: working<CR>
+nnoremap <Leader>sl :SlackStatusUpdate :ramen: lunch<CR>
+nnoremap <Leader>sh :SlackStatusUpdate :house: 帰宅<CR>
+
+" https://blog.bugsnag.com/tmux-and-vim/#quickly-run-shell-commands-without-leaving-vim
+" Prompt for a command to run
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 
 inoremap <C-f> <C-x><C-o>
 
@@ -198,6 +208,9 @@ let g:gitgutter_max_signs = 100000
 
 " vim-terraformの設定
 let g:terraform_fmt_on_save = 1
+
+" slackstatus.vim の設定
+let g:slackstatus_token = $SLACKSTATUS_TOKEN
 
 " lightlineの設定
 let g:lightline = {
