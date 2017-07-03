@@ -121,7 +121,7 @@ noremap / /\v
 
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
-nnoremap <Leader>n  :NERDTree<CR>
+nnoremap <Leader>n  :Explore<CR>
 nnoremap <Leader>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Leader>o  :OtenkiTomorrow<CR>
 nnoremap <Leader>oh :Otenki hachinohe<CR>
@@ -132,7 +132,7 @@ nnoremap <Leader>ug :Unite<Space>grep<CR>
 nnoremap <Leader>um :Unite<Space>file_mru<CR>
 nnoremap <Leader>m  :Memo<CR>
 nnoremap <Leader>sm :SlackStatusUpdate :spiral_calendar_pad: In_a_meeting<CR>
-nnoremap <Leader>sw :SlackStatusUpdate :squidforce: working<CR>
+nnoremap <Leader>sw :SlackStatusUpdate :firefin: working<CR>
 nnoremap <Leader>sl :SlackStatusUpdate :ramen: lunch<CR>
 nnoremap <Leader>sh :SlackStatusUpdate :house: 帰宅<CR>
 
@@ -153,6 +153,9 @@ set pastetoggle=<F2>
 
 " プラグイン設定
 " {{{
+
+" Netrw の設定
+let g:netrw_liststyle = 3
 
 " Uniteの設定
 let g:unite_enable_start_insert=1

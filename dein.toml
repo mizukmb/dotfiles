@@ -27,9 +27,6 @@ repo = 'itchyny/lightline.vim'
 repo = 'tomtom/tcomment_vim'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-
-[[plugins]]
 repo = 'tpope/vim-endwise'
 
 [[plugins]]
