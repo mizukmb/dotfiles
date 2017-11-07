@@ -19,7 +19,11 @@ plugins=(git ruby osx bundler brew rails emoji-clock)
 
 source $ZSH/oh-my-zsh.sh
 
+
 # PATH {{{
+
+export GOPATH=$HOME
+
 # defalut
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
@@ -34,6 +38,8 @@ paths=(
 for p in ${paths}; do
   export PATH="${p}:$PATH"
 done
+
+
 # }}}
 #
 eval "$(rbenv init -)"
