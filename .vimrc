@@ -188,6 +188,9 @@ let g:neocomplete#delimiter_patterns.ruby = ['::']
 " endif
 " let g:neocomplete#force_omni_input_patterns.ruby =
 "       \ '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplete#sources#dictionary#dictionaries = {
+      \   'ruby': $HOME . '/src/github.com/pocke/dicts/ruby.dict',
+      \ }
 
 " vim-quickrunの設定
 let g:quickrun_config = {

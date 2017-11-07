@@ -90,3 +90,6 @@ repo = 'mizukmb/slackstatus.vim'
 
 [[plugins]]
 repo = 'benmills/vimux'
+
+[[plugins]]
+repo = 'todesking/ruby_hl_lvar.vim'
