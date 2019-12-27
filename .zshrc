@@ -2,6 +2,11 @@
 # ref: http://d.hatena.ne.jp/y-echo/20110125/1295971977
 bindkey -e
 
+# [2019/12/27 19:17:52] /path/to/current
+# 🏯 %
+PROMPT="[%D{%Y/%m/%d %T}] %/
+🏯 %# "
+
 # PATH {{{
 
 export GOPATH=$HOME
