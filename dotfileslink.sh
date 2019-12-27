@@ -1,7 +1,10 @@
-#!/bin/sh
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/.gvimrc ~/.gvimrc
-ln -sf ~/dotfiles/.vimshrc ~/.vimshrc
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.gitignore ~/.gitignore
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+#!/bin/bash
+
+SCRIPT_DIR=$(cd $(dirname $0);pwd)
+ln -sf $SCRIPT_DIR/.vimrc ~/.vimrc
+ln -sf $SCRIPT_DIR/dein.toml ~/.dein.toml
+ln -sf $SCRIPT_DIR/.gvimrc ~/.gvimrc
+ln -sf $SCRIPT_DIR/.vimshrc ~/.vimshrc
+ln -sf $SCRIPT_DIR/.zshrc ~/.zshrc
+ln -sf $SCRIPT_DIR/.gitignore ~/.gitignore
+ln -sf $SCRIPT_DIR/.tmux.conf ~/.tmux.conf
