@@ -1,38 +1,22 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="miloshadzic"
-
-# alias
-alias gti='git'
-alias vimrc='vim ~/.vimrc'
-alias ql='qlmanage -p'
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby osx bundler brew rails emoji-clock)
-
-source $ZSH/oh-my-zsh.sh
-
+# Enable bindkey
+# ref: http://d.hatena.ne.jp/y-echo/20110125/1295971977
+bindkey -e
 
 # PATH {{{
 
 export GOPATH=$HOME
+export PYENV_ROOT=/usr/local/var/pyenv
 
 # defalut
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 # etc
 paths=(
-  '$GOPATH/bin'
-  '$HOME/.rbenv/bin'
-  '$HOME/.nodebrew/current/bin'
-  '/usr/local/git/bin'
+  "$GOPATH/bin"
+  "$PYENV_ROOT/bin"
+  "$HOME/.rbenv/bin"
+  "$HOME/.ndenv/bin"
+  "/usr/local/git/bin"
 )
 
 for p in ${paths}; do
@@ -41,8 +25,44 @@ done
 
 
 # }}}
-#
+
+# eval {{{
+
 eval "$(rbenv init -)"
+eval "$(thefuck --alias)"
+eval "$(ndenv init -)"
+eval "$(direnv hook zsh)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# }}}
+
+# export {{{
+
+export EDITOR=/usr/local/bin/vim
+export VISUAL=/usr/local/bin/vim
+export LESS='-g -i -M -R'
+
+# }}}
+
+# alias {{{
+
+alias gti='git'
+alias vimrc='vim ~/.vimrc'
+alias ql='qlmanage -p'
+# ref: https://github.com/robbyrussell/oh-my-zsh/blob/37c2d0ddd751e15d0c87a51e2d9f9849093571dc/plugins/git/git.plugin.zsh#L52
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
+# ref: https://qiita.com/itkrt2y/items/0671d1f48e66f21241e2
+alias gsf='cd $(ghq list -p standfirm | peco)'
+alias gh='hub browse $(ghq list | peco | cut -d "/" -f 2,3)'
+alias gfcm='git fetch -p && git checkout origin/master && gbda'
+alias be='bundle exec'
+# ref: http://rikuga.me/2017/06/25/aws-profile-switch/
+alias awsp='export AWS_DEFAULT_PROFILE=`grep "^\[.*\]" ~/.aws/credentials | tr -d "[" | tr -d "]" | peco`; export AWS_PROFILE=${AWS_DEFAULT_PROFILE}; awsw'
+alias awsw='echo "Current AWS Profile: ${AWS_DEFAULT_PROFILE}"'
+alias doc='docker-compose'
+alias tf='terraform'
+
+# }}}
 
 # 履歴
 HISTFILE=~/.zsh_history
@@ -95,16 +115,8 @@ function dict {
   open dict://$@
 }
 
-# refer to http://r7kamura.github.io/2014/06/21/ghq.html
-p() { peco | while read LINE; do $@ $LINE; done  }
-alias e='ghq list -p | p cd'
-alias eff='ghq list -p feedforce | p cd'
+source $HOME/.cargo/env
 
-export EDITOR=/usr/local/bin/vim
-eval "$(direnv hook zsh)"
-
-export LESS='-g -i -M -R'
-source ~/.cargo/env
 
 function peco-git-recent-branches () {
   local selected_branch=$(git for-each-ref --format='%(refname)' --sort=-committerdate refs/heads | \
@@ -130,8 +142,6 @@ function peco-git-recent-all-branches () {
 }
 zle -N peco-git-recent-all-branches
 
-bindkey '^x^b' peco-git-recent-branches
-bindkey '^xb' peco-git-recent-all-branches
 
 # ローカル環境用の設定を読み込む
 # see: http://qiita.com/awakia/items/1d5cd440ce58ef4fb8ae
