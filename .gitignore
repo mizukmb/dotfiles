@@ -13,3 +13,7 @@ npm-debug.log
 vendor/bundle
 .envrc
 .vscode/
+/public
+.solargraph.yml
+.devcontainer.json
+.terraform/
